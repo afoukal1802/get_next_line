@@ -1,15 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafoukal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 18:27:22 by mafoukal          #+#    #+#             */
-/*   Updated: 2022/11/17 18:27:31 by mafoukal         ###   ########.fr       */
+/*   Created: 2022/11/17 18:29:05 by mafoukal          #+#    #+#             */
+/*   Updated: 2022/11/17 18:42:16 by mafoukal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 ssize_t	ft_strlen(char	*s)
 {

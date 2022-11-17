@@ -1,15 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafoukal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 18:26:35 by mafoukal          #+#    #+#             */
-/*   Updated: 2022/11/17 18:33:41 by mafoukal         ###   ########.fr       */
+/*   Created: 2022/11/17 18:29:40 by mafoukal          #+#    #+#             */
+/*   Updated: 2022/11/17 18:41:47 by mafoukal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_readed(char **handle, int fd)
 {
@@ -42,7 +42,10 @@ void	ft_no_newline(char	**handle, char **line, ssize_t len)
 	i = 0;
 	*line = (char *) ft_calloc(len + 1, sizeof(char));
 	if (!(*line))
+	{
+		free(*handle);
 		return ;
+	}
 	while (i < len)
 	{
 		(*line)[i] = (*handle)[i];
@@ -104,21 +107,21 @@ char	*ft_after_line(char **handle)
 
 char	*get_next_line(int fd)
 {
-	static char	*handle;
+	static char	*handle[OPEN_MAX];
 	char		*line;
 
-	if (read(fd, NULL, 0) == -1 && handle)
-		return (free(handle), handle = NULL, NULL);
+	if (read(fd, NULL, 0) == -1 && handle[fd])
+		return (free(handle[fd]), handle[fd] = NULL, NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) == -1)
 		return (NULL);
-	handle = ft_readed(&handle, fd);
-	if (!handle)
+	handle[fd] = ft_readed(&(handle[fd]), fd);
+	if (!handle[fd])
 		return (NULL);
-	if (*handle == '\0')
-		return (free(handle), handle = NULL, NULL);
-	line = ft_get_line(&handle);
+	if (*(handle[fd]) == '\0')
+		return (free(handle[fd]), handle[fd] = NULL, NULL);
+	line = ft_get_line(&(handle[fd]));
 	if (!line)
-		return (NULL);
-	handle = ft_after_line(&handle);
+		return (free(handle[fd]), handle[fd] = NULL, NULL);
+	handle[fd] = ft_after_line(&(handle[fd]));
 	return (line);
 }

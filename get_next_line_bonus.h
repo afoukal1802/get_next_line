@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafoukal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 18:27:45 by mafoukal          #+#    #+#             */
-/*   Updated: 2022/11/17 18:40:04 by mafoukal         ###   ########.fr       */
+/*   Created: 2022/11/17 18:28:02 by mafoukal          #+#    #+#             */
+/*   Updated: 2022/11/17 18:40:29 by mafoukal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
@@ -20,6 +20,7 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
+# include <limits.h>
 
 ssize_t	ft_strlen(char	*s);
 void	*ft_calloc(size_t count, size_t size);
